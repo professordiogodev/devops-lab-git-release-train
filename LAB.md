@@ -2,7 +2,7 @@
 
 ## The situation
 
-Clipstr has three developers and one shared repository. Maya (lead) just handed you the keys: *"This week you ship Clipstr 1.1.0. We use Git Flow: `develop` for work in progress, `main` for what customers run, feature, release and hotfix branches in between. Priya and Tomas keep pushing while you work. Do not lose their work, and do not ship anything unfinished."*
+Clippy has three developers and one shared repository. Maya (lead) just handed you the keys: *"This week you ship Clippy 1.1.0. We use Git Flow: `develop` for work in progress, `main` for what customers run, feature, release and hotfix branches in between. Priya and Tomas keep pushing while you work. Do not lose their work, and do not ship anything unfinished."*
 
 Everything runs on your machine: a local `origin` plays the part of GitHub, and a script plays your teammates.
 
@@ -24,13 +24,13 @@ Fork this repository, clone your fork in your Ubuntu environment, then run:
 ./setup.sh
 ```
 
-It builds a team repository in `~/git-lab`. Your working copy is `~/git-lab/clipstr`, and the shared remote is `~/git-lab/origin.git`. **Do all Git work in `~/git-lab/clipstr`.** Keep a second terminal in this lab repo for the helper scripts.
+It builds a team repository in `~/git-lab`. Your working copy is `~/git-lab/clippy`, and the shared remote is `~/git-lab/origin.git`. **Do all Git work in `~/git-lab/clippy`.** Keep a second terminal in this lab repo for the helper scripts.
 
 ---
 
 ## Part 1 - Recon: read the history before you touch it
 
-In `~/git-lab/clipstr`:
+In `~/git-lab/clippy`:
 
 1. `git log --oneline --graph --all`. How many branches and tags exist? Who wrote what? (`git shortlog -sn --all`)
 2. `git branch -a` and `git tag -n`. Which branch is the "customers run this" branch, which is the "work in progress" one?

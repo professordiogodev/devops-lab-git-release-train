@@ -11,13 +11,13 @@ case "${1:-}" in
   feature)
     git switch -q develop
     printf '\ndef rate_limit(ip):\n    return True\n' >> app.py
-    git add -A; as "Priya Nair" priya@clipstr.dev git commit -q -m "Add rate limiting"
+    git add -A; as "Priya Nair" priya@clippy.dev git commit -q -m "Add rate limiting"
     git push -q origin develop
     echo "Priya just merged 'Add rate limiting' into develop." ;;
   bug)
     git switch -q develop
     printf '\n# WIP: experimental premium plans, NOT ready\nPREMIUM_ENABLED = True\n' >> app.py
-    git add -A; as "Tomas Costa" tomas@clipstr.dev git commit -q -m "WIP: premium plans experiment"
+    git add -A; as "Tomas Costa" tomas@clippy.dev git commit -q -m "WIP: premium plans experiment"
     git push -q origin develop
     cat <<'B'
 INCIDENT 07:12 - /healthz in production reports the wrong status.

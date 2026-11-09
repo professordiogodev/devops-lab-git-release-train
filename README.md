@@ -1,6 +1,4 @@
-# Git Flow: The Release Train
-
-Three teammates, one origin, a release on Friday and a bug on Saturday. Work like a team on a real branching model and keep history clean.
+<p align="center"><img src="assets/banner.svg" alt="Git Flow: The Release Train" width="100%"></p>
 
 | | |
 |-|-|
@@ -17,9 +15,10 @@ Three teammates, one origin, a release on Friday and a bug on Saturday. Work lik
 5. Commit and push. Open the **Actions** tab of your fork (click *I understand my workflows, go ahead and enable them* the first time). The **Lab check** shows what is still missing.
 6. When the check is green, **submit the URL of your fork** in the course platform.
 
+> [!NOTE]
 > The check only looks at your answers and any files the lab asks you to commit. Your instructor reads your work and may ask you to explain any line.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## The situation
 
@@ -27,6 +26,7 @@ Clipstr has three developers and one shared repository. Maya (lead) just handed 
 
 Everything runs on your machine: a local `origin` plays the part of GitHub, and a script plays your teammates.
 
+> [!IMPORTANT]
 > **Your mission**
 > - Build a feature on its own branch and keep up with a `develop` that keeps moving
 > - Cut **release 1.1.0**, tag it, and merge it back
@@ -35,7 +35,7 @@ Everything runs on your machine: a local `origin` plays the part of GitHub, and 
 
 **Time:** 60-75 min | **Cost:** free | **You need:** Git in your Ubuntu environment. Set your identity first if you never did: `git config --global user.name "Your Name"` and `git config --global user.email you@example.com`
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 0 - Set the scene
 
@@ -47,7 +47,7 @@ Fork this repository, clone your fork in your Ubuntu environment, then run:
 
 It builds a team repository in `~/git-lab`. Your working copy is `~/git-lab/clipstr`, and the shared remote is `~/git-lab/origin.git`. **Do all Git work in `~/git-lab/clipstr`.** Keep a second terminal in this lab repo for the helper scripts.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 1 - Recon: read the history before you touch it
 
@@ -58,9 +58,10 @@ In `~/git-lab/clipstr`:
 3. Open `VERSION`. What version does `main` say it is?
 4. What is the difference between `git log main` and `git log develop`? (`git log main..develop --oneline`)
 
+> [!NOTE]
 > **Think** Why does Git Flow keep two long-lived branches instead of one? What does `main` promise to everybody?
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 2 - A feature, while the world moves
 
@@ -72,18 +73,21 @@ In `~/git-lab/clipstr`:
 ./teammate.sh feature
 ```
 
+> [!NOTE]
 > **Predict** Priya just changed `develop` on the remote. You have not pulled. What does `git status` say? What does `git log --oneline --graph --all` look like after `git fetch`? Write down your prediction, then look.
 
 4. Bring your branch up to date. You have two options, **rebase** onto `origin/develop` or **merge** `origin/develop` into your branch. Pick one, do it, and be able to say why. Look at the graph afterwards.
 5. If you rebased, your branch history changed, so a normal push is rejected. Try `git push` and read the message. Then push safely with `--force-with-lease`.
 
+> [!WARNING]
 > **Break it** Read what `git push --force` would do compared with `--force-with-lease` (look it up). Imagine Priya had pushed to **your** feature branch an hour ago. What does each command do to her commit?
 
 6. Merge the feature into `develop` using `--no-ff` and push `develop`.
 
+> [!TIP]
 > **Checkpoint** `git log --oneline --graph develop` shows a merge commit that groups your two commits, and Priya's "Add rate limiting" is still there.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 3 - The release train: 1.1.0
 
@@ -92,9 +96,10 @@ In `~/git-lab/clipstr`:
 3. Tag that commit with an **annotated** tag `v1.1.0` (`git tag -a`). Run `git show v1.1.0` and compare with `git show v1.0.0`. What extra information does an annotated tag carry?
 4. Merge the release branch **back into `develop`** (the bump must not be lost), and push `main`, `develop` and the tags.
 
+> [!NOTE]
 > **Think** Why `--no-ff` for the release? What would `git log main` look like with a fast-forward instead?
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 4 - Saturday, 07:12: the incident
 
@@ -104,6 +109,7 @@ In `~/git-lab/clipstr`:
 
 It prints the incident report and also has Tomas push an unfinished experiment into `develop`. Read both the report and `git log --oneline develop`.
 
+> [!NOTE]
 > **Predict** You need a fix in production **now**. Which branch do you start the fix from: `main` or `develop`? What goes wrong if you pick the other one?
 
 1. Create `hotfix/1.1.1` from `main`. Fix `healthz()` in `app.py` so it does **not** always report `"ok"` (any reasonable change). Bump `VERSION` to `1.1.1` and commit.
@@ -111,9 +117,10 @@ It prints the incident report and also has Tomas push an unfinished experiment i
 3. **Now the step everybody forgets.** Before you do it, run `git log develop..main --no-merges --oneline`. What does it print, and what does that mean?
 4. Merge the hotfix into `develop` too. **Expect a conflict**: Tomas's experiment and your fix touched the same end of `app.py`. Resolve it, keeping both, with the editor of your choice, then commit and push. Run the log command from step 3 again.
 
+> [!WARNING]
 > **Break it** Open `app.py` while the conflict is unresolved and read the `<<<<<<<`, `=======` and `>>>>>>>` markers. Explain what each side is. What would happen if you committed the file with the markers still in it?
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 5 - Prove it
 
@@ -123,7 +130,7 @@ It prints the incident report and also has Tomas push an unfinished experiment i
 
 It inspects the shared `origin` and checks the shape of the history, not exact commands, so there is more than one correct way to get there. If something fails, read the line: it names what is missing.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Level up (optional)
 

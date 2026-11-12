@@ -22,11 +22,18 @@
 
 ## 🎬 The situation
 
-<p align="center"><img src="assets/gifs/situation.gif" width="300" alt="Animation: Release Friday"></p>
+<p align="center"><img src="assets/gifs/situation.gif" width="300" alt="Feature branches merging into develop and a release branch going to main"></p>
 
-Clippy has three developers and one shared repository. Maya (lead) just handed you the keys: *"This week you ship Clippy 1.1.0. We use Git Flow: `develop` for work in progress, `main` for what customers run, feature, release and hotfix branches in between. Priya and Tomas keep pushing while you work. Do not lose their work, and do not ship anything unfinished."*
+```text
+DEPARTURES                                                   Clippy 1.1.0
+TRAIN              FROM        TO          STATUS
+feature/*          develop     develop     keeps arriving (Priya and Tomas)
+release/1.1.0      develop     main        you are the driver
+hotfix/*           main        main + develop   only if something burns
+Rule of the line   : do not lose anyone's work, do not ship anything unfinished
+```
 
-Everything runs on your machine: a local `origin` plays the part of GitHub, and a script plays your teammates.
+Maya, the lead, has handed you the keys: *"This week you ship Clippy 1.1.0. We use Git Flow: `develop` for work in progress, `main` for what customers run, and feature, release and hotfix branches in between. Priya and Tomas keep pushing while you work."* Everything runs on your machine: a local `origin` plays the part of GitHub, and a script plays your teammates.
 
 > [!IMPORTANT]
 > **Your mission**
